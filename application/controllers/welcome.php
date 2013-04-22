@@ -19,10 +19,8 @@ class Welcome extends CI_Controller {
 	{
 		$years = array('2011', '2012', '2013');
 		$months = array('01', '02', '03', '04', '10', '11', '12');
-		$qualitys = array('low', 'medium', 'high', 'full');
 		if(!in_array($year, $years)) die('Nope');
 		if(!in_array($month, $months)) die('Nope');
-		if(!in_array($quality, $qualitys)) die('Nope');
 
 		$month_n = array(
 			1 => 'January',
