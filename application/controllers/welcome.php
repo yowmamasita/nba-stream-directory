@@ -15,7 +15,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
-	public function games($year, $month, $quality = 'low')
+	public function games($year, $month)
 	{
 		$years = array('2011', '2012', '2013');
 		$months = array('01', '02', '03', '04', '10', '11', '12');
@@ -41,7 +41,6 @@ class Welcome extends CI_Controller {
 
 		$view_data['month'] = $month_n[(int)$month];
 		$view_data['year'] = $year;
-		$view_data['quality'] = $quality;
 
 		//regular season last day
 		if((int)$month == 4 && (int)$year == 2012)
@@ -60,6 +59,65 @@ class Welcome extends CI_Controller {
 		//var_dump($view_data);die();
 
 		$this->load->view('games', $view_data);
+	}
+
+	public function playoffs($season)
+	{
+		$seasons = array('1112', '1213');
+		if(!in_array($season, $seasons)) die('Nope');
+
+		if((int)$season == 1112)
+		{
+			$view_data['season'] = "2011-2012";
+			$view_data['games'] = array();
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2012, 'game_month' => 4))
+			->where_gte('game_day', 28)
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2012, 'game_month' => 5))
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2012, 'game_month' => 6))
+			->where_lte('game_day', 21)
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
+		}
+		elseif((int)$season == 1213)
+		{
+			$view_data['season'] = "2012-2013";
+			$view_data['games'] = array();
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2013, 'game_month' => 4))
+			->where_gte('game_day', 20)
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
+		}
+
+		//var_dump($view_data);die();
+		$this->load->view('playoffs', $view_data);
 	}
 }
 

@@ -42,7 +42,7 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
 $route['games/(\d+)/(\d+)'] = "welcome/games/$1/$2";
-$route['playoffs/(\d+)'] = "welcome/playoffs/$1/$2";
+$route['playoffs/(\d+)'] = "welcome/playoffs/$1";
 
 
 /* End of file routes.php */
