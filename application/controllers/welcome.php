@@ -112,6 +112,25 @@ class Welcome extends CI_Controller {
 			foreach ($playoff as $game) {
 				array_push($view_data['games'], $game);
 			}
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2013, 'game_month' => 5))
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
+
+			$playoff = $this->mongo_db
+			->where(array('game_year' => 2013, 'game_month' => 6))
+			->where_lte('game_day', 21)
+			->order_by(array('game_day' => 'asc', 'game_id' => 'asc'))
+			->get('games');
+
+			foreach ($playoff as $game) {
+				array_push($view_data['games'], $game);
+			}
 		}
 
 		//var_dump($view_data);die();
