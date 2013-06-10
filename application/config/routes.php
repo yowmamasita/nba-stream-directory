@@ -43,6 +43,7 @@ $route['404_override'] = '';
 
 $route['games/(\d+)/(\d+)'] = "welcome/games/$1/$2";
 $route['playoffs/(\d+)'] = "welcome/playoffs/$1";
+$route['tutorial'] = "welcome/tutorial";
 
 
 /* End of file routes.php */
