@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>NBA Stream Directory - <?=$month.' '.$year?></title>
+        <title>NBA Stream Directory</title>
         <meta name="description" content="NBA regular seasons and play-offs 2011-2012, 2012-2013 game stream directory">
         <meta name="viewport" content="width=device-width">
 
@@ -45,20 +45,22 @@
         <div class="container">
             <!-- Example row of columns -->
             <div class="row">
-                <div class="span12 text-center">
-                    <h2><?=$month.' '.$year?></h2>
-                    <?php
-                    $new_day = 0;
-                    foreach ($games as $game) {
-                        if(isset($last_day) && $game['game_day'] > $last_day) {
-                            break;
-                        } 
-                        if($new_day != $game['game_day']) {
-                            $new_day = $game['game_day']; ?>
-                    <h3><?=$month.' '.$new_day?></h3>
-                    <?php } ?>
-                    <p><?=$game['home_team']?> <a class="score" href="#" data-toggle="tooltip" title="<?=$game['home_score']?> - <?=$game['away_score']?>">vs</a> @<?=$game['away_team']?> <i class="icon-facetime-video"></i> <a href="http://nbalp1-f.akamaihd.net/nba/big/leaguepass/<?=$game['game_year']?>/<?=$game['game_month']<10?'0'.$game['game_month']:$game['game_month']?>/<?=$game['game_day']<10?'0'.$game['game_day']:$game['game_day']?>/<?=$game['game_id']?>_,low,.mp4.csmil_0_0@1?v=seek=1000">low</a> <a href="http://nbalp1-f.akamaihd.net/nba/big/leaguepass/<?=$game['game_year']?>/<?=$game['game_month']<10?'0'.$game['game_month']:$game['game_month']?>/<?=$game['game_day']<10?'0'.$game['game_day']:$game['game_day']?>/<?=$game['game_id']?>_,medium,.mp4.csmil_0_0@1?v=seek=1000">med</a> <a href="http://nbalp1-f.akamaihd.net/nba/big/leaguepass/<?=$game['game_year']?>/<?=$game['game_month']<10?'0'.$game['game_month']:$game['game_month']?>/<?=$game['game_day']<10?'0'.$game['game_day']:$game['game_day']?>/<?=$game['game_id']?>_,high,.mp4.csmil_0_0@1?v=seek=1000">high</a> <a href="http://nbalp1-f.akamaihd.net/nba/big/leaguepass/<?=$game['game_year']?>/<?=$game['game_month']<10?'0'.$game['game_month']:$game['game_month']?>/<?=$game['game_day']<10?'0'.$game['game_day']:$game['game_day']?>/<?=$game['game_id']?>_,full,.mp4.csmil_0_0@1?v=seek=1000">full</a></p>
-                    <?php }?>
+                <div class="span12">
+                    <h2>Tutorial</h2>
+                    <p><b>What you need</b></p>
+                    <p>- VLC media player</p>
+                    <p><b>Procedure</b></p>
+                    <p>
+                        - Select a game<br>
+                        - Select quality (low, med, high, full)<br>
+                        - Right-click link<br>
+                        - Copy link address<br>
+                        - Open VLC media player<br>
+                        - Media > Open Network Stream...<br>
+                        - Paste the link<br>
+                        - Click Play<br>
+                        - Enjoy!<br>
+                    </p>
                 </div>
             </div>
 
@@ -75,8 +77,6 @@
         <script src="/static/js/bootstrap.js"></script>
 
         <script src="/static/js/main.js"></script>
-
-        <script>$('.score').tooltip();</script>
 
         <!--<script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

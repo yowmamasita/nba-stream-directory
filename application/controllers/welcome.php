@@ -136,6 +136,11 @@ class Welcome extends CI_Controller {
 		//var_dump($view_data);die();
 		$this->load->view('playoffs', $view_data);
 	}
+
+	public function tutorial()
+	{
+		$this->load->view('tutorial');
+	}
 }
 
 /* End of file welcome.php */

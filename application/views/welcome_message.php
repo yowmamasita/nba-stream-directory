@@ -33,6 +33,11 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="/">NBA Stream Directory</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="/tutorial">How to?</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
