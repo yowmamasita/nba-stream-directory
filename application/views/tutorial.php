@@ -45,7 +45,7 @@
         <div class="container">
             <!-- Example row of columns -->
             <div class="row">
-                <div class="span12">
+                <div class="span12 text-center">
                     <h2>Tutorial</h2>
                     <p><b>What you need</b></p>
                     <p>- VLC media player</p>
